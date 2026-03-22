@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TPC STEREO：電氣再聲｜貴賓報名</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;900&family=Noto+Sans+TC:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --ink: #1a1a18;
+    --ink-light: #4a4a45;
+    --ink-muted: #8a8a82;
+    --paper: #f5f2eb;
+    --paper-warm: #ede9de;
+    --volt: #c8f000;
+    --red: #c43020;
+    --pcb: #1a6b3a;
+    --pcb-dark: #124d2a;
+    --pcb-light: rgba(255,255,255,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .masthead {
+    background: var(--pcb);
+    color: #fff;
+    padding: 2.5rem 5vw 2.5rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  /* PCB circuit trace texture */
+  .masthead::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(255,255,255,0.04) 23px, rgba(255,255,255,0.04) 24px),
+      repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(255,255,255,0.04) 23px, rgba(255,255,255,0.04) 24px);
+    pointer-events: none;
+  }
+  .masthead-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.5px solid rgba(255,255,255,0.18);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.5);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .badge-row { display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: center; }
+  .badge {
+    border: 0.5px solid rgba(255,255,255,0.3);
+    padding: 2px 8px;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    font-family: 'Space Mono', monospace;
+  }
+  .badge-volt { background: var(--volt); border-color: var(--volt); color: var(--ink); }
+
+  .masthead-body { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+  .title-en {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.32em;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.5rem;
+  }
+  .title-zh {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: clamp(52px, 10vw, 96px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+  .title-form-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.45);
+    margin-top: 0.75rem;
+  }
+  .slogan {
+    border: 1px solid rgba(200,240,0,0.5);
+    padding: 0.6rem 1.5rem;
+    margin-top: 1.25rem;
+    display: inline-block;
+  }
+  .slogan-main {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: clamp(15px, 2.5vw, 20px);
+    color: var(--volt);
+    line-height: 1.3;
+    letter-spacing: 0.06em;
+  }
+  .slogan-en {
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.35);
+    margin-top: 4px;
+  }
+
+  /* ── BODY ── */
+  .body-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 5vw 6rem;
+  }
+
+  .release-line {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--red);
+    border: 1px solid var(--red);
+    display: inline-block;
+    padding: 3px 10px;
+    margin-bottom: 2rem;
+  }
+
+  /* intro block */
+  .intro-lead {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(18px, 2.8vw, 24px);
+    font-weight: 400;
+    line-height: 1.9;
+    border-left: 3px solid var(--ink);
+    padding-left: 1.25rem;
+    margin-bottom: 1.25rem;
+    color: var(--ink);
+  }
+  .intro-p {
+    font-size: 16px;
+    line-height: 2;
+    color: var(--ink-light);
+    margin-bottom: 0.75rem;
+  }
+
+  /* event info strip */
+  .info-strip {
+    background: var(--pcb);
+    color: #fff;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    margin: 2rem 0 2.5rem;
+  }
+  .info-cell {
+    padding: 1.25rem 1.5rem;
+    border-right: 0.5px solid rgba(255,255,255,0.1);
+    border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  }
+  .info-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 0.4rem;
+  }
+  .info-val {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.6;
+    color: #fff;
+  }
+
+  /* section label */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    margin-top: 2.5rem;
+  }
+  .section-label::before {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--ink);
+    opacity: 0.18;
+  }
+  .section-label-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--ink-muted);
+    white-space: nowrap;
+  }
+
+  /* ── FORM ── */
+  .field-group { margin-bottom: 2rem; }
+
+  label.field-label {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+  }
+  label.field-label span { color: var(--red); }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  select,
+  textarea {
+    width: 100%;
+    background: #fff;
+    border: 1.5px solid rgba(0,0,0,0.15);
+    color: var(--ink);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    padding: 0.8rem 1rem;
+    outline: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--pcb);
+    box-shadow: 0 0 0 3px rgba(26,107,58,0.1);
+  }
+  select { cursor: pointer; }
+  select option { background: #fff; }
+  textarea { resize: vertical; min-height: 80px; line-height: 1.8; }
+
+  .field-hint {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 0.4rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* attendance toggle */
+  .attend-grid { display: flex; flex-direction: column; gap: 0.5rem; }
+  .attend-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1.5px solid rgba(0,0,0,0.12);
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.15s;
+  }
+  .attend-option:hover { border-color: var(--pcb); }
+  .attend-option input[type="radio"] { display: none; }
+  .radio-dot {
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid rgba(0,0,0,0.25);
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .attend-option input:checked ~ .radio-dot {
+    border-color: var(--pcb);
+  }
+  .attend-option input:checked ~ .radio-dot::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    background: var(--pcb);
+    border-radius: 50%;
+  }
+  .attend-option:has(input:checked) {
+    border-color: var(--pcb);
+    background: rgba(26,107,58,0.04);
+  }
+  .attend-text { font-size: 16px; color: var(--ink); }
+  .attend-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    margin-top: 2px;
+  }
+
+  /* session cards */
+  .session-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+  .session-card {
+    border: 1.5px solid rgba(0,0,0,0.12);
+    background: #fff;
+    padding: 1rem 1.1rem;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+  }
+  .session-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0; height: 0;
+  }
+  .session-card:has(input:checked) {
+    border-color: var(--pcb);
+    background: rgba(26,107,58,0.06);
+  }
+  .session-card:hover { border-color: var(--pcb); }
+  .session-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+    margin-bottom: 0.3rem;
+    opacity: 0.7;
+  }
+  .session-time {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .session-slot {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 3px;
+  }
+
+  /* programme list */
+  .programme { list-style: none; counter-reset: prog; margin: 0.5rem 0 1.5rem; }
+  .programme li {
+    counter-increment: prog;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 0.5px solid rgba(0,0,0,0.08);
+    align-items: flex-start;
+  }
+  .programme li::before {
+    content: counter(prog, decimal-leading-zero);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+    min-width: 22px;
+    padding-top: 2px;
+  }
+  .prog-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .prog-desc { font-size: 14px; color: var(--ink-muted); line-height: 1.8; }
+
+  /* submit */
+  .submit-area { margin-top: 2.5rem; }
+  .submit-btn {
+    background: var(--pcb);
+    color: #fff;
+    border: none;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: 18px;
+    letter-spacing: 0.12em;
+    padding: 1.1rem 3rem;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  .submit-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+  .notice {
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    margin-top: 1rem;
+    line-height: 1.9;
+  }
+
+  /* pull quote */
+  .pull-quote {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(15px, 2.5vw, 20px);
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--ink);
+    padding: 1.75rem 0;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    margin: 2.5rem 0;
+  }
+
+  /* success */
+  .success-screen { display: none; text-align: center; padding: 5rem 0; }
+  .success-screen.show { display: block; }
+  .form-area.hide { display: none; }
+  .success-icon {
+    width: 56px; height: 56px;
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.75rem;
+    font-size: 22px;
+  }
+  .success-title {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 900;
+    font-size: 32px;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  .success-sub { font-size: 14px; color: var(--ink-muted); line-height: 2; }
+  .success-code {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--ink-muted);
+    border: 0.5px solid rgba(0,0,0,0.2);
+    padding: 0.6rem 1.25rem;
+    display: inline-block;
+    margin-top: 1.75rem;
+  }
+
+  /* footer */
+  .contact-footer {
+    background: var(--paper-warm);
+    border-top: 1.5px solid var(--ink);
+    padding: 2rem 5vw;
+  }
+  .contact-org {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+    margin-bottom: 0.25rem;
+  }
+  .contact-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .contact-detail { font-size: 12px; color: var(--ink-muted); margin-top: 0.2rem; }
+
+  @media (max-width: 520px) {
+    .session-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="masthead">
+  <div class="masthead-top">
+    <div class="badge-row">
+      <span class="badge">TAIWAN POWER COMPANY</span>
+      <span class="badge">×</span>
+      <span class="badge">YANKO AUDIO LAB</span>
+      <span class="badge">×</span>
+      <span class="badge">雙好設計</span>
+      <span class="badge badge-volt">2026</span>
+    </div>
+  </div>
+  <div class="masthead-body">
+    <div class="title-en">TPC STEREO</div>
+    <div class="title-zh">電氣再聲</div>
+    <div class="title-form-label">出席意願回覆 · ATTENDANCE RSVP</div>
+    <div class="slogan">
+      <div class="slogan-main">高壓傳真・立體鉅獻</div>
+      <div class="slogan-en">HIGH VOLTAGE FIDELITY · MONUMENTAL STEREO</div>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="body-wrap">
+
+  <div class="release-line">貴賓專屬 · FOR INVITED GUESTS ONLY</div>
+
+  <div class="intro-lead">
+    那些曾承載島嶼電力的設備，如今啟聲歌唱。
+  </div>
+  <p class="intro-p">電力，是現代文明最習以為常、也最容易被遺忘的存在。<br>而音樂，是人類用電流留下的另一種記憶。</p>
+  <p class="intro-p">台灣電力公司（TPC）與 YANKO AUDIO LAB、雙好設計 攜手打造限期開放的 Hi-Fi 聆聽室計畫——《TPC STEREO：電氣再聲》。本計畫以台電退役發電材料為核心材質，由 YANKO AUDIO LAB 音響設計師重新詮釋、再製，打造一套在工業美學 × 高傳真音響的全手工音響系統；雙好設計深入台電發電廠進行田野錄音，擷取運轉的白噪與機械呼吸，重構成獨特的電子音樂作品。</p>
+  <p class="intro-p">一場工業物質記憶的沉浸式電子音樂聆聽計畫。兩組展演，一個老禮堂，限額沉浸聆聽。</p>
+
+  <div class="info-strip">
+    <div class="info-cell">
+      <div class="info-label">LOCATION</div>
+      <div class="info-val">老禮堂空間<br>TBD</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">DATE</div>
+      <div class="info-val">5 月限期開放<br>5場次</div>
+    </div>
+    <div class="info-cell">
+      <div class="info-label">ADMISSION</div>
+      <div class="info-val">預約制<br>憑確認信入場</div>
+    </div>
+  </div>
+
+  <!-- Programme -->
+  <div class="section-label"><span class="section-label-text">活動內容 / PROGRAMME</span></div>
+  <ul class="programme">
+    <li>
+      <div>
+        <div class="prog-title">YANKO AUDIO LAB｜台電退役設備與音響導覽</div>
+        <div class="prog-desc">以退役高壓銅線、電驛、變壓器、示波器重製之全手工 Hi-Fi 系統現場導覽，說明真空管放大電路與電子分音設計邏輯，聆聽工業物質的聲音再生。</div>
+      </div>
+    </li>
+    <li>
+      <div>
+        <div class="prog-title">雙好設計｜電子音樂導聆</div>
+        <div class="prog-desc">田野錄音採集自台電發電廠——機組低頻震盪、冷卻水路白噪、機械呼吸——重構為委製電子音樂作品，現場導聆每一個頻率的物質來源。</div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="pull-quote">
+    「電流的語言，也是音樂的語言。」
+  </div>
+
+  <!-- FORM -->
+  <div class="section-label"><span class="section-label-text">出席意願回覆 / RSVP</span></div>
+
+  <div class="form-area" id="formArea">
+
+    <div class="field-group">
+      <label class="field-label">姓名 · NAME <span>*</span></label>
+      <input type="text" id="name" placeholder="您的姓名" required>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">服務單位／職稱 · AFFILIATION <span>*</span></label>
+      <input type="text" id="affiliation" placeholder="公司 · 媒體 · 機構 · 職稱" required>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">電子信箱 · EMAIL <span>*</span></label>
+      <input type="email" id="email" placeholder="your@email.com" required>
+      <div class="field-hint">確認信與場次提醒將寄至此信箱</div>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">聯絡電話 · PHONE <span>*</span></label>
+      <input type="tel" id="phone" placeholder="09xx-xxx-xxx" required>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">出席意願 · ATTENDANCE <span>*</span></label>
+      <div class="attend-grid">
+        <label class="attend-option">
+          <input type="radio" name="attend" value="yes">
+          <span class="radio-dot"></span>
+          <div>
+            <div class="attend-text">一定到場</div>
+            <div class="attend-sub">請協助選擇場次</div>
+          </div>
+        </label>
+        <label class="attend-option">
+          <input type="radio" name="attend" value="no">
+          <span class="radio-dot"></span>
+          <div>
+            <div class="attend-text">當天不克出席，請寄送資料給我</div>
+            <div class="attend-sub">資料將以 EMAIL 傳送</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="field-group" id="sessionBlock">
+      <label class="field-label">場次選擇 · SELECT SESSION <span>*</span></label>
+      <div class="field-hint" style="margin-bottom: 0.75rem;">每場限額，請擇一報名・每場 16:00–18:00</div>
+      <div class="session-grid">
+        <label class="session-card">
+          <input type="radio" name="session" value="5/1">
+          <div class="session-date">SESSION 01</div>
+          <div class="session-time">5 月 1 日</div>
+          <div class="session-slot">週四 · 16:00–18:00</div>
+        </label>
+        <label class="session-card">
+          <input type="radio" name="session" value="5/9">
+          <div class="session-date">SESSION 02</div>
+          <div class="session-time">5 月 9 日</div>
+          <div class="session-slot">週五 · 16:00–18:00</div>
+        </label>
+        <label class="session-card">
+          <input type="radio" name="session" value="5/16">
+          <div class="session-date">SESSION 03</div>
+          <div class="session-time">5 月 16 日</div>
+          <div class="session-slot">週五 · 16:00–18:00</div>
+        </label>
+        <label class="session-card">
+          <input type="radio" name="session" value="5/23">
+          <div class="session-date">SESSION 04</div>
+          <div class="session-time">5 月 23 日</div>
+          <div class="session-slot">週五 · 16:00–18:00</div>
+        </label>
+        <label class="session-card">
+          <input type="radio" name="session" value="5/30">
+          <div class="session-date">SESSION 05</div>
+          <div class="session-time">5 月 30 日</div>
+          <div class="session-slot">週五 · 16:00–18:00</div>
+        </label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">出席人數（含本人）· GUESTS <span>*</span></label>
+      <select id="guests">
+        <option value="">請選擇</option>
+        <option value="1">1 位</option>
+        <option value="2">2 位</option>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">備注 · NOTES</label>
+      <textarea id="notes" placeholder="特殊需求或希望提前告知的事項⋯⋯"></textarea>
+    </div>
+
+    <div class="submit-area">
+      <button class="submit-btn" onclick="handleSubmit()">確認回覆 · SUBMIT RSVP</button>
+      <p class="notice">
+        報名完成後將收到確認信件，請憑信件入場。<br>
+        如有問題請聯繫 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7d0d0f180e0e3d091c140d120a180f531e121053090a">[email&#160;protected]</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Success -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">✓</div>
+    <div class="success-title">感謝回覆</div>
+    <p class="success-sub">
+      確認信已寄送至您的電子信箱。<br>
+      期待在老禮堂與您相遇。<br><br>
+      <em>We look forward to seeing you at the listening room.</em>
+    </p>
+    <div class="success-code" id="confirmCode">RSVP ——</div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="contact-footer">
+  <div class="contact-org">MEDIA CONTACT — TPC CREATIVE</div>
+  <div class="contact-name">聯絡人姓名</div>
+  <div class="contact-detail">email｜電話</div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Show/hide session block based on attendance
+  document.querySelectorAll('input[name="attend"]').forEach(r => {
+    r.addEventListener('change', () => {
+      const block = document.getElementById('sessionBlock');
+      block.style.display = r.value === 'yes' ? 'block' : 'none';
+    });
+  });
+
+  function handleSubmit() {
+    const name = document.getElementById('name').value.trim();
+    const affil = document.getElementById('affiliation').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const attend = document.querySelector('input[name="attend"]:checked');
+    const guests = document.getElementById('guests').value;
+
+    if (!name) { alert('請填寫姓名'); return; }
+    if (!affil) { alert('請填寫服務單位'); return; }
+    if (!email || !email.includes('@')) { alert('請填寫正確的電子信箱'); return; }
+    if (!phone) { alert('請填寫聯絡電話'); return; }
+    if (!attend) { alert('請選擇出席意願'); return; }
+    if (!guests) { alert('請選擇出席人數'); return; }
+
+    if (attend.value === 'yes') {
+      const session = document.querySelector('input[name="session"]:checked');
+      if (!session) { alert('請選擇場次'); return; }
+    }
+
+    const code = 'TPC-' + Math.random().toString(36).substring(2, 6).toUpperCase() + '-' + Date.now().toString().slice(-4);
+    document.getElementById('confirmCode').textContent = '
